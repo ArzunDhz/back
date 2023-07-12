@@ -1,5 +1,5 @@
 
-import { app } from "../app"
+import { app } from "../app.js"
 
 export const errorMiddleWare = ()=>{
     app.use((err,req,res,next)=>{
