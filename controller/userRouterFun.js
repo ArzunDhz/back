@@ -64,6 +64,8 @@ export const logout = (req, res) => {
       sameSite:"none",
       secure:true
     }).json({
+       success: true,
+      message: "LoggedOut ",
 
         
     })
