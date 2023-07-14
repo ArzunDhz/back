@@ -2,7 +2,7 @@ import { UserSchema } from "../models/dataBaseSchema.js";
 import bcrypt from "bcrypt";
 import { sendCookie } from "../utils/features.js";
 
-export const registerNewUser = async (req, res) => {
+export const registerNewUser = async (req, res, next) => {
  try {
   const { name, email, password } = req.body;
   let user = await UserSchema.findOne({ email });
