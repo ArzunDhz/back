@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-export const connectDataBase = ()=>{
+// here the mongo url is only avaialbe in mongoshell , so copy the link from mongo shell 
+
+export const connectDB = ()=>{
 mongoose
-  .connect("mongodb+srv://admin-arjun:9869579607Aa1@cluster0.ldmnk.mongodb.net/?retryWrites=true", {
-    dbName: "TodoBackend",
+  .connect(process.env.MONGO_URL, {
+    dbName:"Project"
   })
   .then(() => console.log("database connected"));
 }

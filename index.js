@@ -1,7 +1,10 @@
-import { app } from "./app.js";
-import { connectDataBase } from './data/connectDB.js';
-connectDataBase()
 
-app.listen(4000,()=>{
-    console.log("Server started")
-})
+import { app } from './app.js'
+import { connectDB } from './data/connectDB.js';
+connectDB()
+
+
+
+app.listen(process.env.PORT,()=>{
+    console.log(`Server started at ${process.env.PORT}`)
+  })

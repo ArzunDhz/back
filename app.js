@@ -1,23 +1,31 @@
-import express from  'express'
+
+// here we use all the required middleware 
+
+import express from 'express'
+import { config } from 'dotenv';
+import userRouter from './routes/userRoutes.js';
+import taskRouter from './routes/taskRoutes.js';
 import cookieParser from 'cookie-parser';
-import UserRouter from './routes/userRouter.js'
-import TaskRouter from './routes/task.js'
-import { errorMiddleWare } from './middlewares/error.js';
-import cors from 'cors';
+import cors from 'cors'
+import { errorMiddleware } from './middlewares/errorHandeler.js';
 
-export const app = express();
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors({
-    origin:"http://localhost:5173/",
-    methods:["GET","POST","PUT", "DELETE"],
-    credentials:true
-}))
 
-app.use('/api/users', UserRouter)
-app.use('/api/task', TaskRouter)
-app.get('/',(req,res)=>{
-    res.send('started');
+config({
+    path:'./data/config.env'
 })
 
-app.use(errorMiddleWare)
+export const app = express();
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials:true
+}))
+app.use(express.json()) //express json is used for sending the data to the respone field while posting the request 
+app.use(cookieParser()) // use for acccessing cookie present in the req
+app.use('/users',userRouter)
+app.use('/tasks',taskRouter)
+
+app.get('/',(req,res)=>{
+    res.send("Server Stared")
+})
+
+app.use(errorMiddleware)
