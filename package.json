@@ -8,8 +8,8 @@
     "node": ">=14.20.1"
   },
   "scripts": {
-    "start": "set NODE_ENV=Production && node index.js",
-    "dev": "set NODE_ENV=development && nodemon index.js"
+    "start":"node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
